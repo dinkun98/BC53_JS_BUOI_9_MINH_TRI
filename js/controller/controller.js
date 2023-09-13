@@ -10,7 +10,7 @@ function renderDSNV(dsnv) {
             <td>${nhanVien.email}</td>
             <td>${nhanVien.ngayLam}</td>
             <td>${nhanVien.chucVu}</td>
-            <td>${nhanVien.tongLuong}</td>
+            <td>${nhanVien.tongLuong.toLocaleString()}</td>
             <td>${nhanVien.loaiNhanVien}</td>
             <td>
             <button class="btn btn-danger" onclick="xoaNV('${nhanVien.taiKhoan}')">Delete</button>

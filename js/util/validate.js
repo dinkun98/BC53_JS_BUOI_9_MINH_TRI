@@ -21,7 +21,8 @@ function kiemTraTaiKhoan(value, idErr, message) {
     document.querySelector(idErr).innerHTML = "";
     return true;
   } else {
-    document.querySelector(idErr).innerHTML = "";
+    document.querySelector(idErr).innerHTML = message;
+    document.querySelector(idErr).style.display = "block";
     return false;
   }
 }
@@ -33,7 +34,8 @@ function kiemTraTen(value, idErr, message) {
     document.querySelector(idErr).innerHTML = "";
     return true;
   } else {
-    document.querySelector(idErr).innerHTML = "";
+    document.querySelector(idErr).innerHTML = message;
+    document.querySelector(idErr).style.display = "block";
     return false;
   }
 }
@@ -48,6 +50,7 @@ function kiemTraEmail(value, idErr, message) {
     return true;
   } else {
     document.querySelector(idErr).innerHTML = message;
+    document.querySelector(idErr).style.display = "block";
     return false;
   }
 }
@@ -61,63 +64,80 @@ function kiemTraPass(value, idErr, message) {
     return true;
   } else {
     document.querySelector(idErr).innerHTML = message;
+    document.querySelector(idErr).style.display = "block";
     return false;
   }
-
- 
 }
 
 function kiemTraLuongCoBan(value, idErr, message) {
-    if (value < 1000000 || value > 20000000) {
-      document.querySelector(idErr).innerHTML = message;
-      return false;
-    } else {
-      document.querySelector(idErr).innerHTML = "";
-      return true;
-    }
+  if (value < 1000000 || value > 20000000) {
+    document.querySelector(idErr).innerHTML = message;
+    document.querySelector(idErr).style.display = "block";
+    return false;
+  } else {
+    document.querySelector(idErr).innerHTML = "";
+    return true;
   }
-
-function kiemTraChucVu(value,idErr, message){
-    if(value  != "Sếp" && value  != "Trưởng phòng" && value  != "Nhân viên" ){
-        document.querySelector(idErr).innerHTML = message;
-        return false;
-    } else {
-        document.querySelector(idErr).innerHTML = "";
-        return true;
-    }
 }
 
-function kiemTraGioLam(value, idErr, message){
-    if(value <80 || value >200){
-        document.querySelector(idErr).innerHTML = message;
-        return false;
-    } else{
-        document.querySelector(idErr).innerHTML = "";
-        return true;
-    }
+function kiemTraChucVu(value, idErr, message) {
+  if (value === "Chọn chức vụ") {
+    document.querySelector(idErr).innerHTML = message;
+    document.querySelector(idErr).style.display = "block";
+    return false;
+  } else {
+    document.querySelector(idErr).innerHTML = "";
+    return true;
+  }
+}
+
+function kiemTraGioLam(value, idErr, message) {
+  if (value < 80 || value > 200) {
+    document.querySelector(idErr).innerHTML = message;
+    document.querySelector(idErr).style.display = "block";
+    return false;
+  } else {
+    document.querySelector(idErr).innerHTML = "";
+    return true;
+  }
 }
 
 function kiemTraTrung(id, dsnv, idErr, message) {
-    let viTri = dsnv.findIndex(function (nv) {
-      return nv.taiKhoan == id;
-    });
-    if (viTri != -1) {
-      //  tìm thấy
-      document.querySelector(idErr).innerHTML = message;
-      return false;
-    } else {
-      document.querySelector(idErr).innerHTML = "";
-      return true;
-    }
+  let viTri = dsnv.findIndex(function (nv) {
+    return nv.taiKhoan == id;
+  });
+  if (viTri != -1) {
+    //  tìm thấy
+    document.querySelector(idErr).innerHTML = message;
+    document.querySelector(idErr).style.display = "block";
+    return false;
+  } else {
+    document.querySelector(idErr).innerHTML = "";
+    return true;
   }
+}
 
-  function kiemTraDoDai(value, idErr, min, max, message) {
-    var length = value.length;
-    if (length >= min && length <= max) {
-      document.querySelector(idErr).innerHTML = "";
-      return true;
-    } else {
-      document.querySelector(idErr).innerHTML = message;
-      return false;
-    }
+function kiemTraDoDai(value, idErr, min, max, message) {
+  var length = value.length;
+  if (length >= min && length <= max) {
+    document.querySelector(idErr).innerHTML = "";
+    return true;
+  } else {
+    document.querySelector(idErr).innerHTML = message;
+    document.querySelector(idErr).style.display = "block";
+    return false;
   }
+}
+
+function kiemTraNgay(value, idErr, message) {
+  var dateReg = /^\d{2}[./-]\d{2}[./-]\d{4}$/;
+  var isNgay = value.match(dateReg);
+  if (isNgay) {
+    document.querySelector(idErr).innerHTML = "";
+    return true;
+  } else {
+    document.querySelector(idErr).innerHTML = message;
+    document.querySelector(idErr).style.display = "block";
+    return false;
+  }
+}

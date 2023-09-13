@@ -54,7 +54,8 @@ function themNV() {
     );
 
   //kiểm tra ngày làm
-  isValid &= kiemTraRong(nv.ngayLam, "#tbNgay", "Ngày làm không được để trống");
+  isValid &= kiemTraRong(nv.ngayLam, "#tbNgay", "Ngày làm không được để trống") &&
+  kiemTraNgay(nv.ngayLam, "#tbNgay", "Yêu cầu nhập đúng định dạng ngày");
 
   //kiểm tra định dạng lương
   isValid &=
