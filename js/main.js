@@ -168,6 +168,69 @@ function capNhatNV() {
     return item.taiKhoan == nv.taiKhoan;
   });
 
+    //kiểm tra tài khoản
+    var isValid =
+    kiemTraRong(nv.taiKhoan, "#tbTKNV", "Tài khoản không được để trống") &&
+    kiemTraDoDai(nv.taiKhoan, "#tbTKNV", 4, 6, "Tài khoản phải từ 4~6 ký tự !");
+
+  //kiểm tra tên
+  isValid &=
+    kiemTraRong(nv.hoTen, "#tbTen", "Họ và Tên không được để trống !") &&
+    kiemTraTen(nv.hoTen, "#tbTen");
+
+  //kiểm tra email
+  isValid &=
+    kiemTraRong(nv.email, "#tbEmail", "Email không được để trống") &&
+    kiemTraEmail(nv.email, "#tbEmail", "Email Không đúng định dạng !");
+
+  // kiểm tra mật khẩu
+  isValid &=
+    kiemTraRong(nv.matKhau, "#tbMatKhau", "Mật khẩu không được để trống") &&
+    kiemTraPass(
+      nv.matKhau,
+      "#tbMatKhau",
+      "Mật khẩu từ 6-10 ký tự (chứa ít nhất 1 ký tự số, 1 ký tự in hoa, 1 ký tự đặc biệt)"
+    );
+
+  //kiểm tra ngày làm
+  isValid &= kiemTraRong(nv.ngayLam, "#tbNgay", "Ngày làm không được để trống") &&
+  kiemTraNgay(nv.ngayLam, "#tbNgay", "Yêu cầu nhập đúng định dạng ngày");
+
+  //kiểm tra định dạng lương
+  isValid &=
+    kiemTraRong(
+      nv.luongCoBan,
+      "#tbLuongCB",
+      "Lương cơ bản không được để trống"
+    ) &&
+    kiemTraLuongCoBan(
+      nv.luongCoBan,
+      "#tbLuongCB",
+      "Lương cơ bản phải nằm trong khoảng 1 000 000 - 20 000 000"
+    );
+
+  //kiểm tra định dạng chức vụ
+  isValid &=
+    // kiemTraRong(nv.chucVu, "#tbChucVu", "Chức vụ không được để trống") &&
+    kiemTraChucVu(
+      nv.chucVu,
+      "#tbChucVu",
+      "Hãy chọn đúng chức vụ có trong option"
+    );
+
+  //kiểm tra định dạng giờ làm
+  isValid &=
+    kiemTraRong(
+      nv.gioLamTrongThang,
+      "#tbGiolam",
+      "Giờ làm không được để trống"
+    ) &&
+    kiemTraGioLam(
+      nv.gioLamTrongThang,
+      "#tbGiolam",
+      "Số giờ làm phải nằm trong khoảng 80 - 200"
+    );
+
   //Tính tổng lương
   if (nv.chucVu === "Sếp") {
     nv.tongLuong = nv.luongCoBan * 3;
